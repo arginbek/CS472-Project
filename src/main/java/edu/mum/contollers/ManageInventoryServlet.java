@@ -22,7 +22,7 @@ import edu.mum.models.Product;
 /**
  * Servlet implementation class ManageInventoryServlet
  */
-@WebServlet("/manageinventory")
+@WebServlet("/inventory")
 public class ManageInventoryServlet extends HttpServlet {
 	ObjectMapper mapper = new ObjectMapper();
 
@@ -32,7 +32,7 @@ public class ManageInventoryServlet extends HttpServlet {
 		switch (action) {
 		default:
 			HttpSession session = request.getSession();
-			//dao = new InventoryDAO();
+			// dao = new InventoryDAO();
 			List<InventoryItem> allItem = InventoryDAO.getAllItems();
 			session.setAttribute("inventory", allItem);
 			RequestDispatcher disp = request.getRequestDispatcher("manage-inventory.jsp");
@@ -44,25 +44,44 @@ public class ManageInventoryServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String action = request.getParameter("action");
 		List<InventoryItem> allItem = InventoryDAO.getAllItems();
-		Product product = null;
+		InventoryItem itemAction = null;
+		PrintWriter out = response.getWriter();
+		;
+
 		for (InventoryItem item : allItem) {
 			if (item.getProduct().getId().equals(request.getParameter("id"))) {
-				item.getProduct().setPrice(Double.parseDouble(request.getParameter("price")));
-				item.setQuantity(Integer.parseInt(request.getParameter("price")));
-				product = item.getProduct();
+				itemAction = item;
 				break;
 			}
 		}
-		PrintWriter out = response.getWriter();
-		if (product != null) {
-			try {
-				out.print(mapper.writeValueAsString(product));
-			} catch (JsonGenerationException e) {
-				e.printStackTrace();
+
+		switch (action) {
+		case "update":
+			if (itemAction != null) {
+				itemAction.getProduct().setPrice(Double.parseDouble(request.getParameter("price")));
+				itemAction.setQuantity(Integer.parseInt(request.getParameter("quantity")));
+				try {
+					out.print(mapper.writeValueAsString(itemAction.getProduct()));
+				} catch (JsonGenerationException e) {
+					e.printStackTrace();
+				}
+			} else {
+				out.print("");
 			}
-		} else {
-			out.print("");
+			break;
+		case "delete":
+			boolean success = false;
+			String id = "";
+			if (itemAction != null) {
+				id = itemAction.getProduct().getId();
+				success = InventoryDAO.getInventory().remove(itemAction.getProduct().getId(), itemAction);
+				out.print(success ? "Deleted," + id : "Can't," + id);
+			} else {
+				out.print("");
+			}
+			break;
 		}
 	}
 

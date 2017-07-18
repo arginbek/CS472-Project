@@ -5,7 +5,7 @@
 	float: left;
 }
 
-.productPrice .productQuantity {
+input[class="productPrice"], input[class="productQuantity"] {
 	width: 40px
 }
 

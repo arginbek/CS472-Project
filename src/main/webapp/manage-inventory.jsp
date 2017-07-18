@@ -13,14 +13,14 @@
 <body>
 	<h1>All products list</h1>
 	<c:forEach items="${inventory}" var="item">
-		<div>
+		<div id="divProduct${item.product.id}">
 			<p>
 				<img src="resources/images/${item.product.imgName}"
 					alt="${item.product.imgName}" class="productImg"/> 
 				<strong>${item.product.name}</strong><br/>
 				<label>Price: $<input type="text" name="price${item.product.id}" value="${item.product.price}" id="price${item.product.id}" class="productPrice"/></label>
-				<label>Quantity: $<input type="text" name="quantity${item.product.id}" value="${item.quantity}" id="quantity${item.product.id}" class="productQuantity"/></label><br/>
-				<button type="button" id="${item.product.id}" class="btnUpdate">Save</button><a id="a${item.product.id}"></a><br/>
+				<label>Quantity: <input type="text" name="quantity${item.product.id}" value="${item.quantity}" id="quantity${item.product.id}" class="productQuantity"/></label><br/>
+				<button type="button" id="${item.product.id}" class="btnUpdate">Save</button><button type="button" id="${item.product.id}" class="btnDelete">Delete</button><a id="a${item.product.id}" class="amsg"></a><br/>
 				<a>${item.product.description}</a>
 			</p>
 		</div><br/>
