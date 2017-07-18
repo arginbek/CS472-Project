@@ -11,7 +11,8 @@ import edu.mum.models.Product;
 public class InventoryDAO {
 
     static Map<String, InventoryItem> inventory = new HashMap<>();
-    {
+
+    static {
         Product prod;
         for (int i = 1; i <= 20; i++) {
             prod = new Product(Integer.valueOf(i).toString(), "Prod" + i, "Description of the product " + i, 10.00 + i,
@@ -24,7 +25,7 @@ public class InventoryDAO {
     public InventoryDAO() {
     }
 
-    public void addItem(InventoryItem item) {
+    public static void addItem(InventoryItem item) {
         inventory.put(item.getProduct().getId(), item);
     }
 
@@ -36,7 +37,7 @@ public class InventoryDAO {
         return inventory;
     }
 
-    public String genId() {
+    public static String genId() {
         return Integer.valueOf(inventory.size() + 1).toString();
     }
 

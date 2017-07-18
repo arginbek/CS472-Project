@@ -10,11 +10,11 @@ import edu.mum.models.Order;
 public class OrderHistoryDAO {
     private static Map<String, List<Order>> orders;
 
-    {
+    static {
         orders = new HashMap<>();
     }
 
-    public void addOrder(Order order) {
+    public static void addOrder(Order order) {
         List<Order> toBeAdded = new ArrayList<>();
         if (orders.containsKey(order.getUser().getUserName())) {
             toBeAdded = orders.get(order.getUser().getUserName());

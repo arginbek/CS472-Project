@@ -11,7 +11,7 @@ import edu.mum.models.UserType;
 public class UserDAO {
     private static Map<String, User> userlist;
 
-    {
+    static {
         userlist = new HashMap<>();
         User user;
         for (int i = 0; i < 5; i++) {
@@ -30,7 +30,7 @@ public class UserDAO {
         super();
     }
 
-    public boolean addUser(User user) {
+    public static boolean addUser(User user) {
         if (userlist.containsKey(user.getUserName())) {
             return false;
         }
