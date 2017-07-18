@@ -16,6 +16,22 @@ $(function() {
 		var tr = $('<tr>').append(td0).append(td1).append(td2);
 		$('#tbl_products>tbody').append(tr);
 	}
+	
+//	Mustafa
+	
+	$('#list').click(function(event) {
+		event.preventDefault();
+		$('#products .item').addClass('list-group-item');
+	});
+	$('#grid').click(function(event) {
+		event.preventDefault();
+		$('#products .item').removeClass('list-group-item');
+		$('#products .item').addClass('grid-group-item');
+	});
+
+	$("#addToCart").click(printSession);
+
+	
 })
 
 $('.message a').click(function() {
@@ -24,3 +40,12 @@ $('.message a').click(function() {
 		opacity : "toggle"
 	}, "slow");
 });
+
+
+function printSession() {
+
+	
+	var value = '<%= session.getAttribute("g") %>'
+	console.log("good")
+	alert(value);
+}
