@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.mum.dao.InventoryDAO;
+
 public class Cart {
     private Map<String, InventoryItem> cartItems;
 

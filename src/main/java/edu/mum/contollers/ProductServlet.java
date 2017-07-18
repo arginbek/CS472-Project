@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import edu.mum.models.InventoryDAO;
+import edu.mum.dao.InventoryDAO;
 import edu.mum.models.InventoryItem;
 import edu.mum.models.Product;
 
