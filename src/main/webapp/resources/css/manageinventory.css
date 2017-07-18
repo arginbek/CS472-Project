@@ -1,0 +1,20 @@
+@CHARSET "ISO-8859-1";
+
+.productImg {
+	height: 128px;
+	float: left;
+}
+
+.productPrice .productQuantity {
+	width: 40px
+}
+
+.prodMsgError {
+	color: red;
+	font-style: italic;
+}
+
+.prodMsgSuccess {
+	color: green;
+	font-style: italic;
+}

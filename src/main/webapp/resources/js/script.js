@@ -1,6 +1,6 @@
 $(function() {
 	$('#btn_add').click(addProduct);
-
+	
 	function addProduct() {
 		$.post('product', {
 			name : $('#product_name').val(),
