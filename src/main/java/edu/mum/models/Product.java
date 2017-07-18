@@ -6,18 +6,17 @@ public class Product {
     private String description;
     private double price;
     private String imgName;
-    private static int idCounter;
-    
-    {
-        idCounter = 1;
-    }
 
-    public Product(String name, String description, double price, String imgName) {
-        this.id = Integer.valueOf(generateId()).toString();
+    public Product(String id, String name, String description, double price, String imgName) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imgName = imgName;
+    }
+
+    public Product() {
+        super();
     }
 
     public String getId() {
@@ -58,10 +57,6 @@ public class Product {
 
     public void setImgName(String imgName) {
         this.imgName = imgName;
-    }
-    
-    private static int generateId() {
-        return idCounter++;
     }
 
 }
