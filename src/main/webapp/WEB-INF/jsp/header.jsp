@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>MUM Store</title>
 
- <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet"/>
+ <link href="<c:url value='/resources/css/styles.css'/>" rel="stylesheet"/>
     <link href="<c:url value='/resources/css/bootstrap-reboot.min.css'/>" rel="stylesheet"/>
     <link href="<c:url value='/resources/css/bootstrap-grid.min.css'/>" rel="stylesheet"/>
     <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet"/>

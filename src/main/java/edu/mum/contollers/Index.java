@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.mum.models.InventoryDAO;
 import edu.mum.models.InventoryItem;
+import edu.mum.dao.*;
 import edu.mum.models.Product;
 
 /**
@@ -34,9 +34,7 @@ public class Index extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		InventoryDAO inventory = new InventoryDAO();
-		System.out.println(inventory.getAllItems().get(0).getProduct().getName());
-		request.setAttribute("values", inventory.getAllItems());
+		request.setAttribute("values", InventoryDAO.getAllItems());
 		// int[] arr = {1,2,3};
 		// request.setAttribute("values", arr);
 
