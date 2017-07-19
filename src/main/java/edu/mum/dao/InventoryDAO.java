@@ -22,6 +22,7 @@ public class InventoryDAO {
         }
     }
 
+
     public InventoryDAO() {
     }
 

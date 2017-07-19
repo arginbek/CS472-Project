@@ -57,18 +57,20 @@ public class Index extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 
-		Product product = new Product();
-		product.setName(request.getParameter("name"));
-		product.setPrice(Double.valueOf(request.getParameter("price")));
-		product.setId(request.getParameter("id"));
-
-		Cart cart = (Cart) request.getSession().getAttribute("cart");
-		
-		InventoryItem inItem = new InventoryItem(product, 1);
-		
-		cart.addItem(inItem);
-
-		// Update Value
+//		Product product = new Product();
+//		product.setName(request.getParameter("name"));
+//		product.setPrice(Double.valueOf(request.getParameter("price")));
+//		product.setId(request.getParameter("id"));
+//
+//		Cart cart = (Cart) request.getSession().getAttribute("cart");
+//
+//		InventoryItem inItem = new InventoryItem(product, 1);
+//
+//		boolean isAdded = cart.addItem(inItem);
+//
+//		request.getSession().setAttribute("cart", cart);
+//
+//		System.out.println("Is added: "+isAdded+" "+cart.getAllCartItems().size());
 
 	}
 

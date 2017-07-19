@@ -19,15 +19,15 @@ $(function() {
 	
 	
 	
-	$(".btn").click(addToCart);
-	
-	function addToCart() {
-		$.post('index', {
-			name : $('#name').val(),
-			price : $('#price').val(),
-			id: $('#id').val()
-		}, updateCart)
-	}
+//	$(".btn").click(addToCart);
+//	
+//	function addToCart() {
+//		$.post('index', {
+//			name : $('#name').val(),
+//			price : $('#price').val(),
+//			id: $('#id').val()
+//		}, updateCart)
+//	}
 	
 	function updateCart(data){
 		console.log("Called")
@@ -61,5 +61,16 @@ $('.message a').click(function() {
 		height : "toggle",
 		opacity : "toggle"
 	}, "slow");
+});
+
+/* Card.js plugin by Jesse Pollak. https://github.com/jessepollak/card */
+
+$('form').card({
+    container: '.card-wrapper',
+    width: 280,
+
+    formSelectors: {
+        nameInput: 'input[name="first-name"], input[name="last-name"]'
+    }
 });
 

@@ -20,14 +20,16 @@
 					</div>
 
 					<div class="caption">
-						<h5 >${item.product.name}</h5>
-						<input type = "text" id="name" value="${item.product.name}" hidden/>
-						<class="text-muted">$2.29</s> <strong 
+						<h5>${item.product.name}</h5>
+						
+						<strong 
 							class="finalprice">${item.product.price}</strong> 
-							<input type="text" id="price" value="${item.product.price}" hidden/>
-							<input type="text" id="id" value="${item.product.id}" hidden/>
-							<input type="submit" value="Add To Cart"
+							<form action="detailedPage" >
+							<input type="text" id="id" name="id" value="${item.product.id}" hidden/>
+							
+							<input type="submit" value="Show Product"
 							class="btn btn-success btn-md btn-block" id="addToCart" />
+							</form>
 						</p>
 					</div>
 				</div>

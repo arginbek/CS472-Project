@@ -14,12 +14,13 @@
     <link href="<c:url value='/resources/css/bootstrap-reboot.min.css'/>" rel="stylesheet"/>
     <link href="<c:url value='/resources/css/bootstrap-grid.min.css'/>" rel="stylesheet"/>
     <link href="<c:url value='/resources/css/bootstrap.min.css'/>" rel="stylesheet"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
 
 <div id="header">
 	
 <div id="cartDiv">
-	<a class="cartLabel" href="#" ><img  id="cartIcon" alt="cart" src="${pageContext.request.contextPath}/resources/images/checkout.png"/><label class="cartLabel" id="currentCart">0 </label>&nbsp;<label class="cartLabel">Items</label> </a>	
+	<a class="cartLabel" href="checkout" ><img  id="cartIcon" alt="cart" src="${pageContext.request.contextPath}/resources/images/checkout.png"/><label class="cartLabel" id="currentCart">0 </label>&nbsp;<label class="cartLabel">Items</label> </a>	
 </div> 
 </div>
