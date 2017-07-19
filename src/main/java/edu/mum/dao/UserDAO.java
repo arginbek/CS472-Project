@@ -38,8 +38,20 @@ public class UserDAO {
         return true;
     }
 
-    public static List<User> getUserList() {
+    public static List<User> getAllUsers() {
         return new ArrayList<>(userlist.values());
+    }
+
+    public static Map<String, User> getUserList() {
+        return userlist;
+    }
+
+    public static boolean validateEmail(String email) {
+        for (User s : getAllUsers()) {
+            if (email.equals(s.getEmail()))
+                return false;
+        }
+        return true;
     }
 
 }

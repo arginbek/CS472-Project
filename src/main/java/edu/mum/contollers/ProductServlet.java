@@ -48,6 +48,7 @@ public class ProductServlet extends HttpServlet {
         product.setId(dao.genId());
         dao.addItem(new InventoryItem(product, 10));
 
+        
         PrintWriter out = response.getWriter();
         try {
             out.print(mapper.writeValueAsString(product));
