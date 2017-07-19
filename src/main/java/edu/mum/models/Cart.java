@@ -23,7 +23,8 @@ public class Cart {
     }
 
     public boolean addItem(InventoryItem item) {
-        if (InventoryDAO.getInventory().get(item.getProduct().getId()).getQuantity() > item.getQuantity()) {
+        if (InventoryDAO.getInventory()
+        		.get(item.getProduct().getId()).getQuantity() > item.getQuantity()) {
             cartItems.put(item.getProduct().getId(), item);
             return true;
         }

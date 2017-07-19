@@ -41,4 +41,8 @@ public class InventoryDAO {
         return Integer.valueOf(inventory.size() + 1).toString();
     }
 
+    public static InventoryItem getInvItemByProductId(String prodId) {
+        return inventory.get(prodId);
+    }
+
 }

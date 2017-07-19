@@ -30,8 +30,6 @@
 			</c:forEach>
 		</tbody>
 	</table>
-
-
 	<fieldset>
 		<div>
 			<label for="id">Id</label> <input type="text" id="product_id"

@@ -17,7 +17,28 @@ $(function() {
 		$('#tbl_products>tbody').append(tr);
 	}
 	
-//	Mustafa
+	
+	
+	$("#addToCartBtn").click(addToCart);
+	
+	function addToCart() {
+		$.post('detailedPage', {
+			id: $('#productId').val()
+		}, updateCart)
+	}
+	
+	function updateCart(data){
+		console.log("Called")
+		
+		var currentItems = $("#currentCart").text();
+		
+		console.log(currentItems);
+		
+		$("#currentCart").text(parseInt(currentItems)+1+"");
+	}
+	
+
+//	Mustafa	
 	
 	$('#list').click(function(event) {
 		event.preventDefault();
@@ -29,7 +50,6 @@ $(function() {
 		$('#products .item').addClass('grid-group-item');
 	});
 
-	$("#addToCart").click(printSession);
 
 	
 })
@@ -41,11 +61,14 @@ $('.message a').click(function() {
 	}, "slow");
 });
 
+/* Card.js plugin by Jesse Pollak. https://github.com/jessepollak/card */
 
-function printSession() {
+$('form').card({
+    container: '.card-wrapper',
+    width: 280,
 
-	
-	var value = '<%= session.getAttribute("g") %>'
-	console.log("good")
-	alert(value);
-}
+    formSelectors: {
+        nameInput: 'input[name="first-name"], input[name="last-name"]'
+    }
+});
+
