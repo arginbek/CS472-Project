@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.mum.dao.InventoryDAO;
+import edu.mum.models.Cart;
 import edu.mum.models.InventoryItem;
 import edu.mum.models.Product;
 
@@ -58,6 +59,19 @@ public class DetailedPageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
+		String id = request.getParameter("id");
+		InventoryItem item = InventoryDAO.getInventory().get(id);
+		Product product = item.getProduct();
+
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+
+		InventoryItem inItem = new InventoryItem(product, 1);
+
+		boolean isAdded = cart.addItem(inItem);
+
+		request.getSession().setAttribute("cart", cart);
+		
 	}
 
 }

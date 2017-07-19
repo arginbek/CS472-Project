@@ -43,13 +43,13 @@
                             Review Order <div class="pull-right"></div>
                         </div>
                         <div class="panel-body">
-                            <div class="form-group">
+                            
                             
                             <!--For Each -->
                             <c:forEach items="${cart.getAllCartItems()}" var="item">
-                            
+                            <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="//c1.staticflickr.com/1/466/19681864394_c332ae87df_t.jpg" />
+                                    <img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/${item.product.name}.jpg" />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">${item.product.name}</div>
@@ -58,29 +58,26 @@
                                 <div class="col-sm-3 col-xs-3 text-right">
                                     <h6><span>$</span>${item.product.price}</h6>
                                 </div>
+                                    </div>
+                                    <hr />
                                 </c:forEach>  
                                 
                                 <!--End of for Each -->
-                            </div>
-                            <div class="form-group"><hr /></div>
-                         
-                           
-                            <div class="form-group"><hr /></div>
-                            <div class="form-group">
-                                <div class="col-xs-12">
-                                    <strong>Subtotal</strong>
-                                    <div class="pull-right"><span>$</span><span>200.00</span></div>
-                                </div>
-                                <div class="col-xs-12">
-                                    <small>Shipping</small>
-                                    <div class="pull-right"><span>-</span></div>
-                                </div>
-                            </div>
-                            <div class="form-group"><hr /></div>
+                        
+                          
                             <div class="form-group">
                                 <div class="col-xs-12">
                                     <strong>Order Total</strong>
-                                    <div class="pull-right"><span>$</span><span>150.00</span></div>
+                                  
+                                  
+                                  <c:set var="totalPrice" value="${0}" />
+                                  <c:forEach var="item" items="${cart.getAllCartItems()}">
+                                  
+									  <c:set var="totalPrice" value="${totalPrice + item.product.price}" />
+									
+								  </c:forEach>
+                                    
+                                    <div class="pull-right"><span>$</span><span>${totalPrice}</span></div>
                                 </div>
                             </div>
                         </div>
@@ -100,51 +97,51 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Country:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" class="form-control" name="country" value="" />
+                                    <input type="text" class="form-control" name="country" value="" required />
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-6 col-xs-12">
                                     <strong>First Name:</strong>
-                                    <input type="text" name="first_name" class="form-control" value="" />
+                                    <input type="text" name="first_name" class="form-control" value="" required/>
                                 </div>
                                 <div class="span1"></div>
                                 <div class="col-md-6 col-xs-12">
                                     <strong>Last Name:</strong>
-                                    <input type="text" name="last_name" class="form-control" value="" />
+                                    <input type="text" name="last_name" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Address:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" value="" />
+                                    <input type="text" name="address" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>City:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="city" class="form-control" value="" />
+                                    <input type="text" name="city" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>State:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="state" class="form-control" value="" />
+                                    <input type="text" name="state" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Zip / Postal Code:</strong></div>
                                 <div class="col-md-12">
-                                    <input type="text" name="zip_code" class="form-control" value="" />
+                                    <input type="number" name="zip_code" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Phone Number:</strong></div>
-                                <div class="col-md-12"><input type="text" name="phone_number" class="form-control" value="" /></div>
+                                <div class="col-md-12"><input type="tel" name="phone_number" class="form-control" value="" required/></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Email Address:</strong></div>
-                                <div class="col-md-12"><input type="text" name="email_address" class="form-control" value="" /></div>
+                                <div class="col-md-12"><input type="email" name="email_address" class="form-control" value="" required/></div>
                             </div>
                         </div>
                     </div>
@@ -166,12 +163,18 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Credit Card Number:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" /></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_number" value="" required/></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card CVV:</strong></div>
-                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" /></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="car_code" value="" required/></div>
                             </div>
+                            
+                              <div class="form-group">
+                                <div class="col-md-12"><strong>Billing Address:</strong></div>
+                                <div class="col-md-12"><input type="text" class="form-control" name="billing_address" value="" required/></div>
+                            </div>
+                            
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <strong>Expiration Date</strong>

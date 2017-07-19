@@ -35,7 +35,7 @@
 			<a class="cartLabel" href="checkout"><img id="cartIcon"
 				alt="cart"
 				src="${pageContext.request.contextPath}/resources/images/checkout.png" /><label
-				class="cartLabel" id="currentCart">0 </label>&nbsp;<label
+				class="cartLabel" id="currentCart">${cart.getAllCartItems().size()} </label>&nbsp;<label
 				class="cartLabel">Items</label> </a>
 		</div>
 	</div>

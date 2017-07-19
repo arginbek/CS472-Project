@@ -19,15 +19,13 @@ $(function() {
 	
 	
 	
-//	$(".btn").click(addToCart);
-//	
-//	function addToCart() {
-//		$.post('index', {
-//			name : $('#name').val(),
-//			price : $('#price').val(),
-//			id: $('#id').val()
-//		}, updateCart)
-//	}
+	$("#addToCartBtn").click(addToCart);
+	
+	function addToCart() {
+		$.post('detailedPage', {
+			id: $('#productId').val()
+		}, updateCart)
+	}
 	
 	function updateCart(data){
 		console.log("Called")
