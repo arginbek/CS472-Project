@@ -22,7 +22,7 @@ import edu.mum.models.Product;
 /**
  * Servlet implementation class ManageInventoryServlet
  */
-@WebServlet("/inventory")
+@WebServlet(name = "inventory", urlPatterns = { "/inventory" })
 public class ManageInventoryServlet extends HttpServlet {
 	ObjectMapper mapper = new ObjectMapper();
 

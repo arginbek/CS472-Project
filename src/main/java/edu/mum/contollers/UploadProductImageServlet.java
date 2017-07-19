@@ -22,16 +22,16 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import edu.mum.dao.InventoryDAO;
 
-@WebServlet("/UploadProductImage")
+@WebServlet(name = "productupload", urlPatterns = { "/UploadProductImage" })
 public class UploadProductImageServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Part filePart = request.getPart("file");
-		
+
 		Enumeration<String> strs = request.getParameterNames();
 		String productNewID = InventoryDAO.genId();
 		String fileName = "product" + productNewID + ".jpg";
-		Path destination = Paths.get("resources/images/"+fileName);
+		Path destination = Paths.get("resources/images/" + fileName);
 		InputStream fileContent = filePart.getInputStream();
 
 		Files.copy(fileContent, destination);
