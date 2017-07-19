@@ -27,8 +27,11 @@
 							<form action="detailedPage" >
 							<input type="text" id="id" name="id" value="${item.product.id}" hidden/>
 							
-							<input type="submit" value="Show Product"
+							<c:if test="${user.type != 'MANAGER'}">
+								<input type="submit" value="Show Product"
 							class="btn btn-success btn-md btn-block" id="addToCart" />
+							</c:if>
+							
 							</form>
 						</p>
 					</div>

@@ -38,10 +38,15 @@
 			<c:if test="${user != null}">
 				<a class="header" href="#">Account</a> <a class="header" href="login?action=signout">Logout</a>	
 			</c:if>
-			<a class="cartLabel" href="checkout"><img id="cartIcon"
+			
+			<c:if test="${user.type != 'MANAGER'}">
+				<a class="cartLabel" href="checkout"><img id="cartIcon"
 				alt="cart"
 				src="${pageContext.request.contextPath}/resources/images/checkout.png" /><label
 				class="cartLabel" id="currentCart">${cart.getAllCartItems().size()} </label>&nbsp;<label
 				class="cartLabel">Items</label> </a>
+			</c:if>
+			
+		
 		</div>
 	</div>
