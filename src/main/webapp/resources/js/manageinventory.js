@@ -7,55 +7,67 @@ $(function() {
 		e.preventDefault();
 		// Create an FormData object
 		var formData = new FormData(this);
-		
+
 		$.ajax({
-			type: 'POST',
-			url: $(this).attr('action'),
-			data: formData,
-			cache: false,
-			contentType: false,
-			processData: false,
-			success: function(data){
+			type : 'POST',
+			url : $(this).attr('action'),
+			data : formData,
+			cache : false,
+			contentType : false,
+			processData : false,
+			success : function(data) {
 				productNewID = data;
 				alert("File has been uploaded successfully");
 			},
-			error: function(data){
+			error : function(data) {
 				console.log("Error.");
 				console.log(data);
 			}
 		});
-		
-//		$.post($(this).attr("action"), data, function(data1) {
-//			productNewID = data1;
-//			alert("File has been uploaded successfully");
-//		});
+
+		// $.post($(this).attr("action"), data, function(data1) {
+		// productNewID = data1;
+		// alert("File has been uploaded successfully");
+		// });
 	}));
-	
-	$("#newImage").on("change", function(){
+
+	$("#newImage").on("change", function() {
 		$('#upload-form').submit();
 	});
 
 	function createProduct(e) {
-		$.post('inventory', {
-			action : 'create',
-			quantity : $('#newQuantity').val(),
-			product : "{"
-					+ "\"id\" : \""
-					+ productNewID
-					+ "\","
-					+ "\"name\" : \""
-					+ $('#newName').val()
-					+ "\","
-					+ "\"description\" : \""
-					+ $('#newDescription').val()
-					+ "\","
-					+ "\"price\" : \""
-					+ $('#newPrice').val()
-					+ "\","
-					+ "\"imgName\" : \""
-					+ (productNewID === "" ? 'noimage.jpg' : 'product'
-							+ productNewID + '.jpg') + "\"" + "}"
-		}, callbackCreate);
+		// \$[1-9]\d{5,}\.\d{2}
+		var pattPrice = new RegExp(/^\$?[\d,]+(\.\d*)?$/);
+		var pattQty = new RegExp(/^0$|^[1-9][0-9]*$/);
+
+		if (pattPrice.test($('#newPrice').val())) {
+			if (pattQty.test($('#newQuantity').val())) {
+				$.post('inventory', {
+					action : 'create',
+					quantity : $('#newQuantity').val(),
+					product : "{"
+							+ "\"id\" : \""
+							+ productNewID
+							+ "\","
+							+ "\"name\" : \""
+							+ $('#newName').val()
+							+ "\","
+							+ "\"description\" : \""
+							+ $('#newDescription').val()
+							+ "\","
+							+ "\"price\" : \""
+							+ $('#newPrice').val()
+							+ "\","
+							+ "\"imgName\" : \""
+							+ (productNewID === "" ? 'noimage.jpg' : 'product'
+									+ productNewID + '.jpg') + "\"" + "}"
+				}, callbackCreate);
+			}else{
+				alert("Please input correct quantity! It is integer.");
+			}
+		}else{
+			alert("Please input correct price! It is number.");
+		}
 	}
 
 	function deleteProduct(e) {
