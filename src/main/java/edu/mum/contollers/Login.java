@@ -19,6 +19,7 @@ import edu.mum.dao.UserDAO;
 import edu.mum.models.Cart;
 import edu.mum.models.ErrorMessage;
 import edu.mum.models.ErrorMessageType;
+import edu.mum.models.InventoryItem;
 import edu.mum.models.User;
 import edu.mum.models.UserType;
 
@@ -75,7 +76,16 @@ public class Login extends HttpServlet {
 
                 // set cart saved in last session
                 if (CartDAO.checkCartByUsername(userName)) {
-                    request.getSession().setAttribute("cart", CartDAO.getCartByUserName(userName));
+                    Cart newCart = (Cart) request.getSession().getAttribute("cart");
+                    if (newCart != null) {
+                        for (InventoryItem item : CartDAO.getCartByUserName(userName).getAllCartItems()) {
+                            newCart.addItem(item);
+                        }
+                    } else {
+                        newCart = CartDAO.getCartByUserName(userName);
+                    }
+                    request.getSession().setAttribute("cart", newCart);
+
                     // deleting it from DB after saving it to the session
                     CartDAO.deleteCartByUserName(userName);
                 }

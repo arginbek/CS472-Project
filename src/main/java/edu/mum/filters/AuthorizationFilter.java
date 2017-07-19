@@ -13,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.mum.models.ErrorMessage;
 import edu.mum.models.ErrorMessageType;
+import edu.mum.models.User;
+import edu.mum.models.UserType;
 
 /**
  * Servlet Filter implementation class AuthorizationFilter
  */
-@WebFilter(servletNames = { "inventory", "productupload", "checkout" })
+@WebFilter(servletNames = { "inventory", "productupload", "checkout", "account" })
 public class AuthorizationFilter implements Filter {
 
     public AuthorizationFilter() {
@@ -33,7 +35,15 @@ public class AuthorizationFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         if (req.getSession().getAttribute("user") != null) {
-            chain.doFilter(request, response);
+            if ("/inventory".equals(req.getServletPath())) {
+                if (((User) req.getSession().getAttribute("user")).getType().equals(UserType.MANAGER)) {
+                    chain.doFilter(request, response);
+                } else {
+                    resp.sendRedirect("index");
+                }
+            } else {
+                chain.doFilter(request, response);
+            }
         } else {
             req.getSession().setAttribute("errorMessage", new ErrorMessage(ErrorMessageType.OTHER, "Please login!"));
             resp.sendRedirect("login");
