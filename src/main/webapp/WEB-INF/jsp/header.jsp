@@ -42,8 +42,17 @@
 			<c:if test="${user.type != 'MANAGER'}">
 				<a class="cartLabel" href="checkout"><img id="cartIcon"
 				alt="cart"
-				src="${pageContext.request.contextPath}/resources/images/checkout.png" /><label
-				class="cartLabel" id="currentCart">${cart.getAllCartItems().size()} </label>&nbsp;<label
+				src="${pageContext.request.contextPath}/resources/images/checkout.png" />
+				
+								<c:set var="totalAmount" value="${0}" />
+                                  <c:forEach var="item" items="${cart.getAllCartItems()}">
+                                  
+									  <c:set var="totalAmount" value="${totalAmount + (item.quantity)}" />
+									
+								  </c:forEach>
+				
+				
+				<label class="cartLabel" id="currentCart">${totalAmount} </label>&nbsp;<label
 				class="cartLabel">Items</label> </a>
 			</c:if>
 			

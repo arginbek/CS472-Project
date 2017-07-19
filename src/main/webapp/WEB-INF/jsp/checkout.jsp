@@ -53,10 +53,10 @@
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">${item.product.name}</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>1</span></small></div>
+                                    <div class="col-xs-12"><small>Quantity: <span>${item.quantity}</span></small></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>$</span>${item.product.price}</h6>
+                                    <h6><span>$</span>${item.product.price*item.quantity}</h6>
                                 </div>
                                     </div>
                                     <hr />
@@ -73,7 +73,7 @@
                                   <c:set var="totalPrice" value="${0}" />
                                   <c:forEach var="item" items="${cart.getAllCartItems()}">
                                   
-									  <c:set var="totalPrice" value="${totalPrice + item.product.price}" />
+									  <c:set var="totalPrice" value="${totalPrice + (item.product.price*item.quantity)}" />
 									
 								  </c:forEach>
                                     
