@@ -16,7 +16,7 @@ import edu.mum.models.Product;
 /**
  * Servlet implementation class Index
  */
-@WebServlet("/index")
+@WebServlet(name="index", urlPatterns={"/index"})
 public class Index extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
