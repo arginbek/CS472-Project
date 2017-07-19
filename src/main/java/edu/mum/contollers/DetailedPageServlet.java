@@ -15,7 +15,7 @@ import edu.mum.models.Product;
 /**
  * Servlet implementation class DetailedPageServlet
  */
-@WebServlet("/detailedPage")
+@WebServlet(name ="detailedPage", urlPatterns={"/detailedPage"})
 public class DetailedPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
