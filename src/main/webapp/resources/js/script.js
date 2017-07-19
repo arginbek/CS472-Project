@@ -17,7 +17,30 @@ $(function() {
 		$('#tbl_products>tbody').append(tr);
 	}
 	
-//	Mustafa
+	
+	
+	$(".btn").click(addToCart);
+	
+	function addToCart() {
+		$.post('index', {
+			name : $('#name').val(),
+			price : $('#price').val(),
+			id: $('#id').val()
+		}, updateCart)
+	}
+	
+	function updateCart(data){
+		console.log("Called")
+		
+		var currentItems = $("#currentCart").text();
+		
+		console.log(currentItems);
+		
+		$("#currentCart").text(parseInt(currentItems)+1+"");
+	}
+	
+
+//	Mustafa	
 	
 	$('#list').click(function(event) {
 		event.preventDefault();
@@ -29,7 +52,6 @@ $(function() {
 		$('#products .item').addClass('grid-group-item');
 	});
 
-	$("#addToCart").click(printSession);
 
 	
 })
@@ -41,11 +63,3 @@ $('.message a').click(function() {
 	}, "slow");
 });
 
-
-function printSession() {
-
-	
-	var value = '<%= session.getAttribute("g") %>'
-	console.log("good")
-	alert(value);
-}

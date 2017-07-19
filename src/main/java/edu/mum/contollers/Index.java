@@ -6,7 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import edu.mum.models.Cart;
 import edu.mum.models.InventoryItem;
 import edu.mum.dao.*;
 import edu.mum.models.Product;
@@ -38,7 +40,10 @@ public class Index extends HttpServlet {
 		// int[] arr = {1,2,3};
 		// request.setAttribute("values", arr);
 
-		request.getSession().setAttribute("g", "good");
+		HttpSession session = request.getSession();
+		Cart cart = new Cart();
+		session.setAttribute("cart", cart);
+		// TODO Set the cart view value
 
 		request.getRequestDispatcher("WEB-INF/jsp/index.jsp").forward(request, response);
 	}
@@ -51,6 +56,20 @@ public class Index extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+
+		Product product = new Product();
+		product.setName(request.getParameter("name"));
+		product.setPrice(Double.valueOf(request.getParameter("price")));
+		product.setId(request.getParameter("id"));
+
+		Cart cart = (Cart) request.getSession().getAttribute("cart");
+		
+		InventoryItem inItem = new InventoryItem(product, 1);
+		
+		cart.addItem(inItem);
+
+		// Update Value
+
 	}
 
 }

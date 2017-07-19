@@ -1,3 +1,24 @@
+img#cartIcon{
+	width:50px;
+	height:50px;
+}
+
+.cartLabel{
+	    cursor: pointer;
+	    
+	    color:white;
+}
+
+.cartLabel:hover{
+	color:white;
+	text-decoration:none;
+}
+
+div#cartDiv{
+  float:right;
+  margin: 30px;
+  color:white;
+}
 #header{
 	background-color: #292b2c;
 	height:100px;
