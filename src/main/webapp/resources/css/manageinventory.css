@@ -19,7 +19,7 @@ input[class="productPrice"], input[class="productQuantity"] {
 	font-style: italic;
 }
 
-.divProduct{
+.divProduct {
 	height: 150px;
 	width: 384px;
 	float: left;
@@ -36,7 +36,8 @@ input[class="productPrice"], input[class="productQuantity"] {
 	width: 320px;
 }
 
-#fsCreateProd .newProduct, #fsCreateProd label, #fsCreateProd fieldset, #fsCreateProd form{
+#fsCreateProd .newProduct, #fsCreateProd label, #fsCreateProd fieldset,
+	#fsCreateProd form {
 	width: 97%;
 	margin: 2px;
 }
@@ -44,6 +45,17 @@ input[class="productPrice"], input[class="productQuantity"] {
 #newImage {
 	width: 78%;
 }
-#newImageUpload{
+
+#newImageUpload {
 	width: 20%;
+}
+
+#fsOrderList {
+	
+}
+
+.divOrder {
+	width: 90%;
+	margin: 2px;
+	float: right;
 }

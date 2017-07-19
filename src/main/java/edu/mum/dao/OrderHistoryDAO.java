@@ -22,4 +22,8 @@ public class OrderHistoryDAO {
         toBeAdded.add(order);
         orders.put(order.getUser().getUserName(), toBeAdded);
     }
+    
+    public static List<Order> getOrderByUsername(String pUserName){
+    	return orders.get(pUserName);
+    }
 }

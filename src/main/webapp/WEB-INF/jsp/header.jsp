@@ -36,7 +36,7 @@
 				<a class="header" href="login">Login</a>
 			</c:if>
 			<c:if test="${user != null}">
-				<a class="header" href="#">Account</a> <a class="header" href="login?action=signout">Logout</a>	
+				<a class="header" href="#">Account</a> <a class="header" href="shoppinghistory">Order History</a> <a class="header" href="login?action=signout">Logout</a>	
 			</c:if>
 			
 			<c:if test="${user.type != 'MANAGER'}">
