@@ -25,6 +25,12 @@
 
 	<div id="header">
 
+	<div id="logo">
+		<a href="index"> <img id="cartIcon"
+				alt="cart"
+				src="${pageContext.request.contextPath}/resources/images/home.png" />  </a>
+	</div>
+
 		<div id="cartDiv">
 			<c:if test='${user == null}'>
 				<a class="header" href="login">Login</a>

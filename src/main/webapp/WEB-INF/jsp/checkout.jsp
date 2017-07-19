@@ -153,11 +153,11 @@
                             <div class="form-group">
                                 <div class="col-md-12"><strong>Card Type:</strong></div>
                                 <div class="col-md-12">
-                                    <select id="CreditCardType" name="CreditCardType" class="form-control">
-                                        <option value="5">Visa</option>
-                                        <option value="6">MasterCard</option>
-                                        <option value="7">American Express</option>
-                                        <option value="8">Discover</option>
+                                    <select id="CreditCardType" required name="CreditCardType" class="form-control">
+                                        <option hidden value="">Select</option>
+                                        <option value="1">Paypal</option>
+                                        <option value="2">Visa</option>
+                                        <option value="3">Debit</option>
                                     </select>
                                 </div>
                             </div>
@@ -180,8 +180,8 @@
                                     <strong>Expiration Date</strong>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="">
-                                        <option value="">Month</option>
+                                    <select class="form-control" name="monthSelect" required>
+                                        <option value="" hidden >Month</option>
                                         <option value="01">01</option>
                                         <option value="02">02</option>
                                         <option value="03">03</option>
@@ -197,8 +197,8 @@
                                 </select>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <select class="form-control" name="">
-                                        <option value="">Year</option>
+                                    <select class="form-control" name="yearSelect" required>
+                                        <option value="" hidden>Year</option>
                                         <option value="2015">2015</option>
                                         <option value="2016">2016</option>
                                         <option value="2017">2017</option>
