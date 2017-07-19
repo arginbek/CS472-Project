@@ -20,6 +20,7 @@ import edu.mum.models.Cart;
 import edu.mum.models.ErrorMessage;
 import edu.mum.models.ErrorMessageType;
 import edu.mum.models.User;
+import edu.mum.models.UserType;
 
 /**
  * Servlet implementation class Login
@@ -42,10 +43,19 @@ public class Login extends HttpServlet {
                 }
                 response.sendRedirect("login");
             } else {
-                response.sendRedirect("index");
+                doRedirect(request, response);
             }
         } else {
             request.getRequestDispatcher(LOGIN).forward(request, response);
+        }
+    }
+
+    private void doRedirect(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        if (((User) request.getSession().getAttribute("user")).getType().equals(UserType.MANAGER)) {
+            response.sendRedirect("inventory");
+        } else {
+            response.sendRedirect("index");
         }
     }
 
@@ -62,26 +72,24 @@ public class Login extends HttpServlet {
                     && password.equals(UserDAO.getUserList().get(userName).getPassword())) {
                 request.getSession().setAttribute("user", UserDAO.getUserList().get(userName));
                 request.getSession().removeAttribute("errorMessage");
-                
-                //set cart saved in last session
-                if(CartDAO.checkCartByUsername(userName)){
+
+                // set cart saved in last session
+                if (CartDAO.checkCartByUsername(userName)) {
                     request.getSession().setAttribute("cart", CartDAO.getCartByUserName(userName));
-                    //deleting it from DB after saving it to the session
+                    // deleting it from DB after saving it to the session
                     CartDAO.deleteCartByUserName(userName);
                 }
-                
+
                 if (remember != null) {
-                    Cookie c = new Cookie("userName", userName);
-                    c.setPath("/webstore");
+                    Cookie c = new Cookie("login", userName);
                     c.setMaxAge(24 * 60 * 60 * 30);
                     response.addCookie(c);
                 } else {
-                    Cookie c = new Cookie("userName", null);
-                    c.setPath("/webstore");
+                    Cookie c = new Cookie("login", null);
                     c.setMaxAge(0);
                     response.addCookie(c);
                 }
-                response.sendRedirect("index");
+                doRedirect(request, response);
             } else {
                 // ObjectMapper mapper = new ObjectMapper();
                 // response.getWriter().print(mapper.writeValueAsString(
@@ -95,7 +103,6 @@ public class Login extends HttpServlet {
             }
             break;
         case "signup":
-            boolean success = false;
             if (UserDAO.getUserList().containsKey(request.getParameter("username"))) {
                 request.getSession().setAttribute("signupError",
                         new ErrorMessage(ErrorMessageType.SIGNUP, "Please choose another username"));
@@ -112,17 +119,12 @@ public class Login extends HttpServlet {
                 request.getSession().removeAttribute("signupError");
                 request.getSession().setAttribute("errorMessage",
                         new ErrorMessage(ErrorMessageType.SIGNIN, "Please login using your new account"));
-                success = true;
             }
-            if (success)
-                response.sendRedirect("login");
-            else
-                response.sendRedirect("login#tab-2");
+            response.sendRedirect("login");
             break;
         default:
             break;
         }
-
     }
 
 }

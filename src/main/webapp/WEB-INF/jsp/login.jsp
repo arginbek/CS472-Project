@@ -24,7 +24,7 @@
 					<form method="post" action="login?action=signin">
 						<div class="group">
 							<label for="user" class="label">Username</label> <input id="user"
-								name="username" type="text" value="${cookie.username.value}" class="input">
+								name="username" type="text" value="${cookie.login.value}" class="input">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label> <input id="pass"
