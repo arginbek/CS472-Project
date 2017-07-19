@@ -1,7 +1,7 @@
 @CHARSET "ISO-8859-1";
 
 .productImg {
-	height: 128px;
+	width: 128px;
 	float: left;
 }
 
@@ -17,4 +17,33 @@ input[class="productPrice"], input[class="productQuantity"] {
 .prodMsgSuccess {
 	color: green;
 	font-style: italic;
+}
+
+.divProduct{
+	height: 150px;
+	width: 384px;
+	float: left;
+}
+
+#fsProdList {
+	position: absolute;
+	margin-right: 360px;
+	overflow: auto;
+}
+
+#fsCreateProd {
+	float: right;
+	width: 320px;
+}
+
+#fsCreateProd .newProduct{
+	width: 97%;
+	margin: 2px;
+}
+
+#newImage {
+	width: 78%;
+}
+#newImageUpload{
+	width: 20%;
 }

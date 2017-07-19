@@ -48,7 +48,6 @@ public class ManageInventoryServlet extends HttpServlet {
 		List<InventoryItem> allItem = InventoryDAO.getAllItems();
 		InventoryItem itemAction = null;
 		PrintWriter out = response.getWriter();
-		;
 
 		for (InventoryItem item : allItem) {
 			if (item.getProduct().getId().equals(request.getParameter("id"))) {
@@ -80,6 +79,25 @@ public class ManageInventoryServlet extends HttpServlet {
 				out.print(success ? "Deleted," + id : "Can't," + id);
 			} else {
 				out.print("");
+			}
+			break;
+		case "create":
+			int qty = Integer.parseInt(request.getParameter("quantity"));
+			String param = request.getParameter("product");
+			try {
+				Product prod = mapper.readValue(param, Product.class);
+				if (prod.getId().isEmpty()) {
+					prod.setId(InventoryDAO.genId());
+					prod.setImgName("noimage.jpg");
+				}
+				InventoryDAO.getInventory().put(prod.getId(), new InventoryItem(prod, qty));
+				try {
+					out.print(mapper.writeValueAsString(prod));
+				} catch (JsonGenerationException e) {
+					e.printStackTrace();
+				}
+			} catch (JsonGenerationException e) {
+				e.printStackTrace();
 			}
 			break;
 		}

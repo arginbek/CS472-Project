@@ -1,6 +1,62 @@
 $(function() {
+	var productNewID = "";
 	$('.btnUpdate').click(updateProduct);
 	$('.btnDelete').click(deleteProduct);
+	$('#newBtnCreate').click(createProduct);
+	$('#upload-form').on('submit', (function(e) {
+		e.preventDefault();
+		// Create an FormData object
+		var formData = new FormData(this);
+		
+		$.ajax({
+			type: 'POST',
+			url: $(this).attr('action'),
+			data: formData,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function(data){
+				productNewID = data;
+				alert("File has been uploaded successfully");
+			},
+			error: function(data){
+				console.log("Error.");
+				console.log(data);
+			}
+		});
+		
+//		$.post($(this).attr("action"), data, function(data1) {
+//			productNewID = data1;
+//			alert("File has been uploaded successfully");
+//		});
+	}));
+	
+	$("#newImage").on("change", function(){
+		$('#upload-form').submit();
+	});
+
+	function createProduct(e) {
+		$.post('inventory', {
+			action : 'create',
+			quantity : $('#newQuantity').val(),
+			product : "{"
+					+ "\"id\" : \""
+					+ productNewID
+					+ "\","
+					+ "\"name\" : \""
+					+ $('#newName').val()
+					+ "\","
+					+ "\"description\" : \""
+					+ $('#newDescription').val()
+					+ "\","
+					+ "\"price\" : \""
+					+ $('#newPrice').val()
+					+ "\","
+					+ "\"imgName\" : \""
+					+ (productNewID === "" ? 'noimage.jpg' : 'product'
+							+ productNewID + '.jpg') + "\"" + "}"
+		}, callbackCreate);
+	}
 
 	function deleteProduct(e) {
 		if (confirm('Are you sure?')) {
@@ -20,6 +76,10 @@ $(function() {
 			price : $('#price' + e.target.id).val(),
 			quantity : $('#quantity' + e.target.id).val()
 		}, callbackUpdate);
+	}
+
+	function callbackCreate() {
+		location.reload();
 	}
 
 	function callbackDelete(data) {
