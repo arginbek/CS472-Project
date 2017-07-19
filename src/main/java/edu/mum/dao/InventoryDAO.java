@@ -22,7 +22,6 @@ public class InventoryDAO {
         }
     }
 
-
     public InventoryDAO() {
     }
 
@@ -40,6 +39,10 @@ public class InventoryDAO {
 
     public static String genId() {
         return Integer.valueOf(inventory.size() + 1).toString();
+    }
+
+    public static InventoryItem getInvItemByProductId(String prodId) {
+        return inventory.get(prodId);
     }
 
 }
