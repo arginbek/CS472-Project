@@ -36,7 +36,7 @@ input[class="productPrice"], input[class="productQuantity"] {
 	width: 320px;
 }
 
-#fsCreateProd .newProduct{
+#fsCreateProd .newProduct, #fsCreateProd label, #fsCreateProd fieldset, #fsCreateProd form{
 	width: 97%;
 	margin: 2px;
 }

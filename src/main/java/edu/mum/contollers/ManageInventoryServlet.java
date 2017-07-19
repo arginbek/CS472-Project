@@ -35,7 +35,7 @@ public class ManageInventoryServlet extends HttpServlet {
 			// dao = new InventoryDAO();
 			List<InventoryItem> allItem = InventoryDAO.getAllItems();
 			session.setAttribute("inventory", allItem);
-			RequestDispatcher disp = request.getRequestDispatcher("manage-inventory.jsp");
+			RequestDispatcher disp = request.getRequestDispatcher("WEB-INF/jsp/manage-inventory.jsp");
 			disp.forward(request, response);
 			// response.sendRedirect("manage-inventory.jsp");
 			break;
