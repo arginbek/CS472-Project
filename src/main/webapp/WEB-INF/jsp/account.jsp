@@ -9,7 +9,8 @@
 	src="<c:url value='/resources/js/jquery-3.2.1.min.js'/>"></script>
 <script type="text/javascript"
 	src="<c:url value='/resources/js/account.js'/>"></script>
-<link href="<c:url value='/resources/css/account.css'/>" rel="stylesheet">
+<link href="<c:url value='/resources/css/account.css'/>"
+	rel="stylesheet">
 <title>MUM Store</title>
 </head>
 <body>
@@ -22,10 +23,10 @@
 				</script></td>
 			</tr>
 			<tr>
-				<td>First name: ${user.firstName}</td>
+				<td id="fname">First name: ${user.firstName}</td>
 			</tr>
 			<tr>
-				<td>Last name: ${user.lastName}</td>
+				<td id="lname">Last name: ${user.lastName}</td>
 			</tr>
 			<tr>
 				<td>User name: ${user.userName}</td>
@@ -34,7 +35,9 @@
 				<td>Email: ${user.email}</td>
 			</tr>
 			<tr>
-				<td> <button id="edit_btn" >Edit</button> </td>
+				<td>
+					<button id="edit_btn">Edit</button>
+				</td>
 			</tr>
 		</table>
 	</div>

@@ -15,11 +15,11 @@
 </head>
 <body>
 	<div id="bodydiv">
-		<form>
-			First name: <input type="text" name="firstname" pattern="[A-Za-z]+" required> <br /> <br />
-			Last name: <input type="text" name="lastname" pattern="[A-Za-z]+" required> <br /> <br />
-			<input type="submit" value="Save" id="save_btn" >
-		</form>
+		First name: <input type="text" id="firstname" name="firstname"
+			pattern="[A-Za-z]+" required> <br /> <br /> Last name: <input
+			type="text" id="lastname" name="lastname" pattern="[A-Za-z]+"
+			required> <br /> <br />
+			<button type="button" id="save_btn" >Save</button> 
 	</div>
 </body>
 </html>

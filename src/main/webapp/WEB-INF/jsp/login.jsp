@@ -52,20 +52,20 @@
 					<form method="post" action="login?action=signup">
 						<div class="group">
 							<label for="first" class="label">First name</label> <input
-								name="first" type="text" class="input" pattern="[A-Za-z]+"
+								name="first" type="text" class="input" title="Only letters" pattern="[A-Za-z]+"
 								required>
 						</div>
 						<div class="group">
 							<label for="last" class="label">Last name</label> <input
-								name="last" type="text" class="input" pattern="[A-Za-z]+" required>
+								name="last" type="text" class="input" title="Only letters" pattern="[A-Za-z]+" required>
 						</div>
 						<div class="group">
 							<label for="user" class="label">Username</label> <input id="user"
-								type="text" name="username" class="input" required>
+								type="text" name="username" title="start with a letter and use only letters, digits, _" pattern="[A-Za-z]{1}[A-Za-z0-9_]+" class="input" required>
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label> <input id="pass"
-								name="pass1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+								name="pass1" title="requirement: length min 6, 1 uppercase, 1 lower case, one digit" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
 								type="password" class="input" data-type="password" required>
 						</div>
 						<div class="group">
@@ -75,8 +75,8 @@
 								class="input" data-type="password" required>
 						</div>
 						<div class="group">
-							<label for="pass" class="label">Email Address</label> <input
-								id="pass" name="email" type="email" class="input" required>
+							<label for="email" class="label">Email Address</label> <input
+								id="email" name="email" type="email" class="input" required>
 						</div>
 						<div class="group">
 							<label class="label">${signupError.detail}</label>

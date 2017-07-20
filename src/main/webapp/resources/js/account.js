@@ -4,8 +4,24 @@ $(function() {
 					function() {
 						/*window
 								.open("edit_account.jsp", null);*/
-						PopupCenter("edit_account.jsp", "Edit Account Info", 300, 200);
+						PopupCenter("edit_account.jsp", "Edit Account Info", 400, 300);
 					})
+	$('#save_btn').click(function() {
+		$.post("account", 
+		{
+			first: $('#firstname').val(),
+			last: $('#lastname').val()
+		})
+		.done(function(data) {
+			data = JSON.parse(data);
+			window.close();
+			$('#fname', opener.document).text("First name: " + data.firstName);
+			$('#lname', opener.document).html("Last name: " + data.lastName);
+		})
+		.fail(function() {
+			alert("action failed");
+		})
+	})
 })
 
 function PopupCenter(url, title, w, h) {

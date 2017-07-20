@@ -38,6 +38,10 @@ public class UserDAO {
         return true;
     }
 
+    public static void updateUser(User user) {
+        userlist.put(user.getUserName(), user);
+    }
+
     public static List<User> getAllUsers() {
         return new ArrayList<>(userlist.values());
     }
