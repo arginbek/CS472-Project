@@ -14,12 +14,15 @@
 	rel="stylesheet">
 </head>
 <body>
-	<div id="bodydiv">
-		First name: <input type="text" id="firstname" name="firstname"
-			pattern="[A-Za-z]+" required> <br /> <br /> Last name: <input
-			type="text" id="lastname" name="lastname" pattern="[A-Za-z]+"
-			required> <br /> <br />
-			<button type="button" id="save_btn" >Save</button> 
+	<div id="wrapper">
+		<p>Please enter new values</p>
+		<div id="bodydiv">
+			<label>First name: <input type="text" id="firstname"
+				name="firstname" pattern="[A-Za-z]+" required></label> <br /> <br />
+			<label>Last name: <input type="text" id="lastname"
+				name="lastname" pattern="[A-Za-z]+" required></label> <br /> <br />
+			<button type="button" id="save_btn">Save</button>
+		</div>
 	</div>
 </body>
 </html>

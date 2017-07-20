@@ -17,7 +17,7 @@ $(function() {
 						/*
 						 * window .open("edit_account.jsp", null);
 						 */
-						PopupCenter("edit_account.jsp", "Edit Account Info", 400, 300);
+						PopupCenter("edit_account.jsp", "Edit Account Info", 400, 200);
 					})
 	$('#save_btn').click(function() {
 		$.post("account", 
@@ -47,7 +47,7 @@ function PopupCenter(url, title, w, h) {
 
     var left = ((width / 2) - (w / 2)) + dualScreenLeft;
     var top = ((height / 2) - (h / 2)) + dualScreenTop;
-    var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+    var newWindow = window.open(url, title, 'scrollbars=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left + ', toolbar=no, resizable=no');
 
     // Puts focus on the newWindow
     if (window.focus) {
