@@ -41,11 +41,14 @@ public class DetailedPageServlet extends HttpServlet {
 		String name = product.getName();
 		String description = product.getDescription();
 		double price = product.getPrice();
+		String imageName = product.getImgName();
 		
 		
 		
 		request.setAttribute("id", id);
 		request.setAttribute("name", name);
+		request.setAttribute("imgName", imageName);
+		
 		request.setAttribute("description", description);
 		request.setAttribute("price", price);
 		

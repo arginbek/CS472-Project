@@ -10,7 +10,7 @@
 					<div class="preview col-md-6">
 						
 						<div class="preview-pic tab-content">
-						  <div class="tab-pane active" id="pic-1"><img src="${pageContext.request.contextPath}/resources/images/${name}.jpg" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="${pageContext.request.contextPath}/resources/images/${imgName}" /></div>
 						  
 						</div>
 						

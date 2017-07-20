@@ -49,7 +49,7 @@
                             <c:forEach items="${cart.getAllCartItems()}" var="item">
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/${item.product.name}.jpg" />
+                                    <img class="img-responsive" src="${pageContext.request.contextPath}/resources/images/${item.product.imgName}" />
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
                                     <div class="col-xs-12">${item.product.name}</div>

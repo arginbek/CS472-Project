@@ -16,7 +16,7 @@
 					<div class="imgthumb img-responsive">
 <!-- 						<img src="http://lorempixel.com/250/250/business/?a=7"> -->
 
-							<img src="${pageContext.request.contextPath}/resources/images/${item.product.name}.jpg">
+							<img src="${pageContext.request.contextPath}/resources/images/${item.product.imgName}">
 					</div>
 
 					<div class="caption">
