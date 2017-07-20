@@ -24,8 +24,8 @@
 					<c:forEach items="${order.cart.getAllCartItems()}" var="item">
 						<div id="divProduct${item.product.id}" class="divProduct">
 							<p>
-								<img src="resources/images/${item.product.imgName}"
-									alt="${item.product.imgName}" class="productImg" /> <strong>${item.product.name}</strong><br />
+								<a href="detailedPage?id=${item.product.id}"><img src="resources/images/${item.product.imgName}"
+									alt="${item.product.imgName}" class="productImg" /></a> <strong>${item.product.name}</strong><br />
 								<a>Price: ${item.product.price}</a> <a>Quantity:
 									${item.quantity} </a><br />
 									<a>Description: ${item.product.description}</a>
