@@ -35,6 +35,17 @@ table tr td button {
 	text-align: center;
 }
 
+table tr td input {
+	background: white;
+	border: 1px solid white;
+	width: 100%;
+	height: 50px;
+	font-family: Cuprum;
+	font-size: 25px;
+	color: #34495e;
+	text-align: center;
+}
+
 #profile table tr td.image {
 	background-color: #34495e;
 	border: none;

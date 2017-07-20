@@ -39,6 +39,13 @@
 					<button id="edit_btn">Edit</button>
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<form action="index">
+						<input type="submit" value="Go Home" />
+					</form>
+				</td>
+			</tr>
 		</table>
 	</div>
 </body>

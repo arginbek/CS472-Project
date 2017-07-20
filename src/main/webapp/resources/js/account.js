@@ -1,9 +1,22 @@
 $(function() {
+	/*$('#home_btn').click(function() {
+		$.get("index", {}).done(function(data) {
+			
+		}).fail(function() {
+			
+		});
+	})
+	
+	$('#logout_btn').click(function() {
+		$.get("login?action=signout");
+	})*/
+	
 	$('#edit_btn')
 			.click(
 					function() {
-						/*window
-								.open("edit_account.jsp", null);*/
+						/*
+						 * window .open("edit_account.jsp", null);
+						 */
 						PopupCenter("edit_account.jsp", "Edit Account Info", 400, 300);
 					})
 	$('#save_btn').click(function() {
@@ -25,7 +38,7 @@ $(function() {
 })
 
 function PopupCenter(url, title, w, h) {
-    // Fixes dual-screen position                         Most browsers      Firefox
+    // Fixes dual-screen position Most browsers Firefox
     var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : screen.left;
     var dualScreenTop = window.screenTop != undefined ? window.screenTop : screen.top;
 

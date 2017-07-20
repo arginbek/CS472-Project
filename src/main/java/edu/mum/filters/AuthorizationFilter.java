@@ -19,7 +19,7 @@ import edu.mum.models.UserType;
 /**
  * Servlet Filter implementation class AuthorizationFilter
  */
-@WebFilter(servletNames = { "inventory", "productupload", "checkout", "account" })
+@WebFilter(servletNames = { "inventory", "productupload", "checkout", "account", "history" })
 public class AuthorizationFilter implements Filter {
 
     public AuthorizationFilter() {
