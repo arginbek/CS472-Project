@@ -48,10 +48,18 @@ img#cartIcon{
 	height:50px;
 }
 
-.cartLabel{
+button.cartLabel{
 	    cursor: pointer;
-	    
+		display:inline;	    
 	    color:white;
+	    background-color: #292b2c!important;
+	    border:none;
+	    margin-top: -13px;
+}
+form#checkoutForm{
+	display:inline;
+	background-color:black;
+	float:right;
 }
 
 a.header{

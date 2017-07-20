@@ -40,7 +40,11 @@
 			</c:if>
 			
 			<c:if test="${user.type != 'MANAGER'}">
-				<a class="cartLabel" href="checkout"><img id="cartIcon"
+			
+			<form id="checkoutForm" action="checkout" onsubmit="return valiData();">
+			
+			
+			<button type="submit" class="cartLabel" ><img id="cartIcon"
 				alt="cart"
 				src="${pageContext.request.contextPath}/resources/images/checkout.png" />
 				
@@ -53,7 +57,12 @@
 				
 				
 				<label class="cartLabel" id="currentCart">${totalAmount} </label>&nbsp;<label
-				class="cartLabel">Items</label> </a>
+				class="cartLabel">Items</label> </button>
+			
+			</form>
+			
+			
+				
 			</c:if>
 			
 		

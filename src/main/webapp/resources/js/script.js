@@ -1,6 +1,6 @@
 $(function() {
 	$('#btn_add').click(addProduct);
-	
+
 	function addProduct() {
 		$.post('product', {
 			name : $('#product_name').val(),
@@ -16,30 +16,28 @@ $(function() {
 		var tr = $('<tr>').append(td0).append(td1).append(td2);
 		$('#tbl_products>tbody').append(tr);
 	}
-	
-	
-	
+
 	$("#addToCartBtn").click(addToCart);
-	
+	// $(".cartLabel").click(checkCart);
+
 	function addToCart() {
 		$.post('detailedPage', {
-			id: $('#productId').val()
+			id : $('#productId').val()
 		}, updateCart)
 	}
-	
-	function updateCart(data){
-		console.log("Called")
-		
-		var currentItems = $("#currentCart").text();
-		
-		console.log(currentItems);
-		
-		$("#currentCart").text(parseInt(currentItems)+1+"");
-	}
-	
 
-//	Mustafa	
-	
+	function updateCart(data) {
+		console.log("Called")
+
+		var currentItems = $("#currentCart").text();
+
+		console.log(currentItems);
+
+		$("#currentCart").text(parseInt(currentItems) + 1 + "");
+	}
+
+	// Mustafa
+
 	$('#list').click(function(event) {
 		event.preventDefault();
 		$('#products .item').addClass('list-group-item');
@@ -50,8 +48,6 @@ $(function() {
 		$('#products .item').addClass('grid-group-item');
 	});
 
-
-	
 })
 
 $('.message a').click(function() {
@@ -61,14 +57,15 @@ $('.message a').click(function() {
 	}, "slow");
 });
 
-/* Card.js plugin by Jesse Pollak. https://github.com/jessepollak/card */
+function valiData() {
+	var currentItems = $("#currentCart").text();
 
-$('form').card({
-    container: '.card-wrapper',
-    width: 280,
+	var numOfItems = parseInt(currentItems);
+	if (numOfItems == 0) {
+		alert("Your Cart is Empty!")
+		return false;
+	} else {
+		return true;
 
-    formSelectors: {
-        nameInput: 'input[name="first-name"], input[name="last-name"]'
-    }
-});
-
+	}
+}
